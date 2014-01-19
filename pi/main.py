@@ -50,4 +50,3 @@ with open(filename, 'wb') as csvfile:
         parsed = parseData(readLine)
         IMUwriter.writerow(parsed)
         print parsed
-        print readLine
