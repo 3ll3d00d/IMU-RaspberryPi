@@ -1,9 +1,8 @@
 # TO SAMPLE FOREVER: python main.py
 # TO TAKE A SET NUMBER OF SAMPLES: python main.py 50
 
-import csv,serial,os,re
+import csv,serial,os,re,sys
 from datetime import datetime
-import matplotlib.pyplot as plt
 
 # Analog data: 0: pitch / 1: roll / 2: yaw / 3: accelX / 4: accelY / 5: accelZ
 labels = ["pitch","roll","yaw","accelX","accelY","accelZ","latitude","longitude","altitude","GPS_fix"]
@@ -51,3 +50,4 @@ with open(filename, 'wb') as csvfile:
         parsed = parseData(readLine)
         IMUwriter.writerow(parsed)
         print parsed
+        print readLine
