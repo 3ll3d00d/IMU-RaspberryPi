@@ -38,7 +38,10 @@ if len(sys.argv) > 1:
 # open a logging file
 timestamp = datetime.today().strftime("%Y-%m-%d_%H:%M:%S")
 home = os.path.expanduser("~")
-filename = os.path.join(home,"logs",timestamp + ".csv")
+path = os.path.join(home,"imulogs")
+if not os.path.exists(path):
+    os.makedirs(path)
+filename = os.path.join(path,timestamp + ".csv")
 
 with open(filename, 'wb') as csvfile:
     IMUwriter = csv.writer(csvfile, delimiter=',',
