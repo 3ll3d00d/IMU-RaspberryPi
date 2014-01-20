@@ -30,9 +30,15 @@ numsamples = -1 # sample forever by default
 if len(sys.argv) > 1:
     numsamples = int(sys.argv[1])
 
+    if len(sys.argv) > 2:
+        directory = sys.argv[2]
+    else:
+        directory = "logs"
+
 # open a logging file
 timestamp = datetime.today().strftime("%Y-%m-%d_%H:%M:%S")
-filename = os.path.join("logs",timestamp + ".csv")
+home = os.path.expanduser("~")
+filename = os.path.join(home,"logs",timestamp + ".csv")
 
 with open(filename, 'wb') as csvfile:
     IMUwriter = csv.writer(csvfile, delimiter=',',
