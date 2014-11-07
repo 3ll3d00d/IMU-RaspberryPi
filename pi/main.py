@@ -37,7 +37,7 @@ if len(sys.argv) > 1:
 
 # open a logging file
 timestamp = datetime.today().strftime("%Y-%m-%d_%H:%M:%S")
-path = "/home/revo/imulogs" # change this to your username
+path = "home/Documents/REVO/IMU-RaspberryPi/pi/logs" # change this to your username
 if not os.path.exists(path):
     os.makedirs(path)
 filename = os.path.join(path,timestamp + ".csv")
