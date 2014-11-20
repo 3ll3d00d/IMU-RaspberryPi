@@ -235,7 +235,6 @@ DEPFLAGS		=	-MD -MT $@
 # XXX warning options TBD
 CXXOPTS			= 	-mcall-prologues -ffunction-sections -fdata-sections -fno-exceptions
 COPTS			=	-mcall-prologues -ffunction-sections -fdata-sections
-ASOPTS			=	-assembler-with-cpp 
 LISTOPTS		=	-adhlns=$(@:.o=.lst)
 
 CXXFLAGS		=	-g -mmcu=$(MCU) $(DEFINES) -Wa,$(LISTOPTS) $(OPTFLAGS) $(DEPFLAGS) $(CXXOPTS)
