@@ -20,9 +20,6 @@ colors = ["r","b","g","c","m","k"]
 labels = ["pitch","roll","yaw","accelX","accelY","accelZ","latitude","longitude","altitude","GPS_fix"]
 
 
-
-
-
 def read_csv_and_plot_figure():
 
     for i in range(6):
