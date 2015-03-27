@@ -1,6 +1,8 @@
-# TO SAMPLE FOREVER: python main.py
-# TO TAKE A SET NUMBER OF SAMPLES: python main.py 50
-
+"""
+@authors: brennamanning, jovanduy, redfern314
+plots accelerometer data in real time
+DO NOT USE
+"""
 #original imports
 import csv,serial,os,re,sys,time
 from datetime import datetime
