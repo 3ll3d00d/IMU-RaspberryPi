@@ -8,14 +8,10 @@ from math import sqrt
 
 background_colour = (0,0,0)
 (width, height) = (350, 350)
-
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption('Tutorial 1')
-screen.fill(background_colour)
-     
+screen.fill(background_colour)    
 pygame.display.flip()
-
-#DISPLAYSURF = pygame.display.set_mode((500,400), 0, 32)
 pygame.display. set_caption('Acceleration')
 #set up colors
 WHITE = (255, 255, 255)
@@ -32,6 +28,8 @@ def remap_interval(val, input_interval_start = -.5, input_interval_end = .5, out
     """
     return int(((val - input_interval_start) * (output_interval_end - output_interval_start) / float(input_interval_end - input_interval_start) + output_interval_start))
    
+
+#DRAW BACKROUND AND 
 pygame.draw.line(screen, GRAY, (remap_interval(-2), remap_interval(0)), (remap_interval(2),remap_interval(0)), 1)
 pygame.draw.line(screen, GRAY, (remap_interval(0), remap_interval(-2)), (remap_interval(0), remap_interval(2)), 1)
 pygame.draw.circle(screen, RED, (175, 175), 170, 1)

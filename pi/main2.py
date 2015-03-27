@@ -1,5 +1,11 @@
-# TO SAMPLE FOREVER: python main.py
-# TO TAKE A SET NUMBER OF SAMPLES: python main.py 50
+"""
+@authors: brennamanning, jovanduy, redfern314
+
+Collects Accelerometer Data from Arduimu.
+
+TO SAMPLE FOREVER: python main2.py
+TO TAKE A SET NUMBER OF SAMPLES: python main.py 50
+"""
 
 import csv,serial,os,re,sys
 from datetime import datetime
@@ -10,7 +16,8 @@ channel = ["AN0","AN1","AN2","AN3","AN4","AN5","Time","LAT","LON","ALT","FIX"]
 
 def parseData(data):
     sample = []
-    for i in range(11):
+    num_channels = len(channel)
+    for i in range(num_channels):
         pattern = re.compile(r".*"+channel[i]+r":([\-\d\.]+).*")
         matched = pattern.match(data)
         if matched:
@@ -26,6 +33,7 @@ def parseData(data):
 
     return sample
 
+
 numsamples = -1 # sample forever by default
 if len(sys.argv) > 1:
     numsamples = int(sys.argv[1])
@@ -36,11 +44,15 @@ if len(sys.argv) > 1:
         directory = "logs"
 
 # open a logging file
-timestamp = datetime.today().strftime("%Y-%m-%d_%H:%M:%S")
-path = "home/REVO/IMU-RaspberryPi/pi/logs" # change this to your username
-if not os.path.exists(path):
-    os.makedirs(path)
-filename = os.path.join(path,timestamp + ".csv")
+def open_logging():
+    timestamp = datetime.today().strftime("%Y-%m-%d_%H:%M:%S")
+    path = "home/REVO/IMU-RaspberryPi/pi/logs" # change this to your username
+    if not os.path.exists(path):
+        os.makedirs(path)
+    filename = os.path.join(path,timestamp + ".csv")
+
+open_logging()
+
 
 with open(filename, 'wb') as csvfile:
     IMUwriter = csv.writer(csvfile, delimiter=',',
@@ -58,3 +70,8 @@ with open(filename, 'wb') as csvfile:
         parsed = parseData(readLine)
         IMUwriter.writerow(parsed)
         print parsed
+
+
+
+
+
