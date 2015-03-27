@@ -48,7 +48,7 @@ with open(filename, 'wb') as csvfile:
     IMUwriter.writerow(labels)
 
     # read from the device
-    s = serial.Serial(port='/dev/ttyUSB0', baudrate=38400)
+    s = serial.Serial(port='/dev/tty.usbserial-A7027EKU', baudrate=38400)
     i = 0
 
     while i!=numsamples:
