@@ -19,8 +19,10 @@ ACCEL_CONVERSION = 4096
 colors = ["r","b","g","c","m","k"]
 labels = ["pitch","roll","yaw","accelX","accelY","accelZ","latitude","longitude","altitude","GPS_fix"]
 
+if len(sys.argv) > 1:
+    filename = sys.argv[1]
+    rawData = {}  
 
-def read_csv_and_plot_figure():
 
     for i in range(6):
         rawData[labels[i]] = []
@@ -57,13 +59,9 @@ def read_csv_and_plot_figure():
                 plt.plot(rawData["accelX"][-1],rawData["accelY"][-1], marker='o', color='blue',linestyle='None')
                 plt.pause(0.01)
 
-
     plt.legend()
     plt.show()
 
-if len(sys.argv) > 1:
-    filename = sys.argv[1]
-    rawData = {}  
-    read_csv_and_plot_figure()  
+
 else:
     print "Please specify a .csv"
