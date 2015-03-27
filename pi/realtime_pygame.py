@@ -13,22 +13,12 @@ from datetime import datetime
 from pygame.locals import *
 from math import sqrt
 
-<<<<<<< HEAD
 ACCEL_CONVERSION = 4096
 
 # Analog data: 0: pitch / 1: roll / 2: yaw / 3: accelX / 4: accelY / 5: accelZ
 labels = ["pitch","roll","yaw","accelX","accelY","accelZ","time","latitude","longitude","altitude","GPS_fix"]
 channel = ["AN0","AN1","AN2","AN3","AN4","AN5","Time","LAT","LON","ALT","FIX"]
 
-=======
-background_colour = (0,0,0)
-(width, height) = (350, 350)
-screen = pygame.display.set_mode((width, height))
-pygame.display.set_caption('Tutorial 1')
-screen.fill(background_colour)    
-pygame.display.flip()
-pygame.display. set_caption('Acceleration')
->>>>>>> f80b81ddf4702fbf5e6ce7b3664bc80152a35cf3
 #set up colors
 WHITE = (255, 255, 255)
 RED = (255, 0, 0)
@@ -57,7 +47,6 @@ def remap_interval(val, input_interval_start = -.5, input_interval_end = .5, out
     """
     return int(((val - input_interval_start) * (output_interval_end - output_interval_start) / float(input_interval_end - input_interval_start) + output_interval_start))
    
-<<<<<<< HEAD
 def draw_background():
     """ Draw the background for the pygame window
         (fill the background with a color and draw the axes)
@@ -73,26 +62,6 @@ def draw_acceleration(xaccel, yaccel):
     """
     pygame.draw.circle(screen, BLUE,(remap_interval(xaccel), remap_interval(yaccel)), 5, 0)
     # screen.blit(bluecircle, (remap_interval(float(row[3])), remap_interval(float(row[4]))))
-=======
-
-#DRAW BACKROUND AND 
-pygame.draw.line(screen, GRAY, (remap_interval(-2), remap_interval(0)), (remap_interval(2),remap_interval(0)), 1)
-pygame.draw.line(screen, GRAY, (remap_interval(0), remap_interval(-2)), (remap_interval(0), remap_interval(2)), 1)
-pygame.draw.circle(screen, RED, (175, 175), 170, 1)
-pygame.font.init()
-myfont = pygame.font.SysFont("freesansbold", 20)
-
-
-
-
-
-ACCEL_CONVERSION = 4096
-
-# Analog data: 0: pitch / 1: roll / 2: yaw / 3: accelX / 4: accelY / 5: accelZ
-labels = ["pitch","roll","yaw","accelX","accelY","accelZ","time","latitude","longitude","altitude","GPS_fix"]
-channel = ["AN0","AN1","AN2","AN3","AN4","AN5","Time","LAT","LON","ALT","FIX"]
-
->>>>>>> f80b81ddf4702fbf5e6ce7b3664bc80152a35cf3
 
 def display_text(xaccel, yaccel, yaw):
     """ Display the text for the G-Force and Yaw in the pygame window """
