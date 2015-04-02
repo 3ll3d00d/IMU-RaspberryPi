@@ -4,19 +4,14 @@ import csv,sys
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import numpy as np
+import time
 
 
 colors = ["r","b","g","c","m","k"]
 labels = ["pitch","roll","yaw","accelX","accelY","accelZ","latitude","longitude","altitude","GPS_fix"]
 
-
-
-def animate(i):
-    line.set_ydata(rawData["accelX"])  # update the data
-    return line,
-def init():
-    line.set_ydata(np.ma.array(x, mask=True))
-    return line,
+fig = plt.figure()
+ax1 = fig.add_subplot(1,1,1)
 
 
 if len(sys.argv) > 1:
@@ -40,14 +35,21 @@ if len(sys.argv) > 1:
                 rawData["accelY"].append(float(row[4]))
                 rawData["accelZ"].append(float(row[5]))
 
+       
+       
+    
+else:
+    print "Please specify a .csv"   
 
-        fig, ax = plt.subplots()
-        x = np.arange(len(rawData["accelX"]))        # x-array
-        line, = ax.plot(x, rawData["accelX"])
+t = np.linspace(0, len(rawData["accelX"])-1) 
 
-        ani = animation.FuncAnimation(fig, animate, np.arange(1, len(rawData["accelX"])))#, #init_func=init,
-            #interval=25, blit=True)
-        plt.show()
+def animate(i):
+    ax1.clear()
+    ax1.plot(t, rawData["accelX"])        
+
+
+ani = animation.FuncAnimation(fig, animate, interval= 1000)
+plt.show()
 
     #for i in range(6):
         #plt.plot(rawData[labels[i]],color=colors[i],label=labels[i])
@@ -55,5 +57,3 @@ if len(sys.argv) > 1:
     #plt.legend()
     #plt.show()
     
-else:
-    print "Please specify a .csv"
