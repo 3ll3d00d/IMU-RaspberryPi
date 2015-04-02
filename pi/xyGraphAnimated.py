@@ -2,8 +2,22 @@
 # TO RUN: python plotData.py 2014-01-19_14:56:32.csv
 import csv,sys
 import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+import numpy as np
+
+
 colors = ["r","b","g","c","m","k"]
 labels = ["pitch","roll","yaw","accelX","accelY","accelZ","latitude","longitude","altitude","GPS_fix"]
+
+
+
+def animate(i):
+    line.set_ydata(rawData["accelX"])  # update the data
+    return line,
+def init():
+    line.set_ydata(np.ma.array(x, mask=True))
+    return line,
+
 
 if len(sys.argv) > 1:
     filename = sys.argv[1]
@@ -26,11 +40,20 @@ if len(sys.argv) > 1:
                 rawData["accelY"].append(float(row[4]))
                 rawData["accelZ"].append(float(row[5]))
 
-    for i in range(6):
-        plt.plot(rawData[labels[i]],color=colors[i],label=labels[i])
 
-    plt.legend()
-    plt.show()
+        fig, ax = plt.subplots()
+        x = np.arange(len(rawData["accelX"]))        # x-array
+        line, = ax.plot(x, rawData["accelX"])
+
+        ani = animation.FuncAnimation(fig, animate, np.arange(1, len(rawData["accelX"])))#, #init_func=init,
+            #interval=25, blit=True)
+        plt.show()
+
+    #for i in range(6):
+        #plt.plot(rawData[labels[i]],color=colors[i],label=labels[i])
+
+    #plt.legend()
+    #plt.show()
     
 else:
     print "Please specify a .csv"
