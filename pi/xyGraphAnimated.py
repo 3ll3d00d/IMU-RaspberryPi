@@ -1,3 +1,10 @@
+"""
+    plot the analog data
+    TO RUN: python xyGraphAnimated.py 2014-01-19_14:56:32.csv
+
+    @authors: jovanduy, brennamanning, redfern314
+"""
+
 # plot the analog data
 # TO RUN: python xyGraphAnimated.py 2014-01-19_14:56:32.csv
 
@@ -39,28 +46,32 @@ if len(sys.argv) > 1:
         while i < len(rawData["accelX"]):
             i += 1
             t += 1
-            yield t, rawData["accelX"][t]
+            yield t, rawData["accelX"][t], rawData["accelY"][t]
     data_gen.t = 0
 
     fig, ax = plt.subplots()
-    line, = ax.plot([], [], lw=2)
+    linexaccel, = ax.plot([], [], lw=2)
+    lineyaccel, = ax.plot([], [], lw=2)
     ax.set_ylim(-20000.0, 20000.0)
     ax.set_xlim(0, 50)
     ax.grid()
-    xdata, ydata = [], []
+    time, xacceldata, yacceldata = [], [], []
     def run(data):
         # update the data
-        t,y = data
-        xdata.append(t)
-        ydata.append(y)
+        t,x,y = data
+        time.append(t)
+        xacceldata.append(x)
+        yacceldata.append(y)
         xmin, xmax = ax.get_xlim()
 
         if t >= xmax:
             ax.set_xlim(xmin, 2*xmax)
             ax.figure.canvas.draw()
-        line.set_data(xdata, ydata)
+        linexaccel.set_data(time, xacceldata)
+        lineyaccel.set_data(time, yacceldata)
 
-        return line,
+
+        return linexaccel, lineyaccel
 
     ani = animation.FuncAnimation(fig, run, data_gen, blit=True, interval=10,
         repeat=False)
