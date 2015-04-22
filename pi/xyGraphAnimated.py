@@ -20,15 +20,12 @@ labels = ["pitch","roll","yaw","accelX","accelY","accelZ","latitude","longitude"
 
 if len(sys.argv) > 1:
     filename = sys.argv[1]
-
     rawData = {}
     for i in range(6):
         rawData[labels[i]] = []
-
     with open(filename, 'rb') as csvfile:
         IMUreader = csv.reader(csvfile, delimiter=',',
                                 quotechar='|', quoting=csv.QUOTE_MINIMAL)
-
         # read all the data
         for row in IMUreader:
             if row[0] != "pitch": # first row is headers
@@ -38,6 +35,7 @@ if len(sys.argv) > 1:
                 rawData["accelX"].append(float(row[3]))
                 rawData["accelY"].append(float(row[4]))
                 rawData["accelZ"].append(float(row[5]))
+
 
     
     def data_gen():

@@ -21,6 +21,10 @@ BLACK = (0,0,0)
 GRAY = (100, 100, 100)
 
 
+# Analog data: 0: pitch / 1: roll / 2: yaw / 3: accelX / 4: accelY / 5: accelZ
+labels = ["pitch","roll","yaw","accelX","accelY","accelZ","latitude","longitude","altitude","GPS_fix"]
+channel = ["AN0","AN1","AN2","AN3","AN4","AN5","LAT","LON","ALT","FIX"]
+
 def remap_interval(val, input_interval_start = -.5, input_interval_end = .5, output_interval_start = 0, output_interval_end = 350):
     """ Given an input value in the interval [input_interval_start,
         input_interval_end], return an output value scaled to fall within
@@ -39,10 +43,6 @@ def initialize_font():
     """Initializes font for text"""
     pygame.font.init()
     myfont = pygame.font.SysFont("freesansbold", 20)
-
-
-
-
 
 def parseData(data):
     sample = []
@@ -87,11 +87,7 @@ with open(filename, 'wb') as csvfile:
     #s = serial.Serial(port='/dev/ttyUSBserial-A7027EKU', baudrate=38400)
     s = serial.Serial(port='/dev/ttyUSB0', baudrate=38400)
 
-
     i = 0
-
-    
-
 
     while i!=numsamples:
         print "A: ", i
