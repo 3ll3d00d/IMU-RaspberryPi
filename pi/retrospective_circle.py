@@ -5,9 +5,9 @@
 Reads accelerometer data from csv file
 Creates animated plot of recorded data on a circular graph
 
-TO RUN: python circleGraph.py (CSV FILE NAME)
+TO RUN: python retrospective_circle.py (CSV FILE NAME)
 ex:
-TO RUN: python circleGraph.py 2014-01-19_14:56:32.csv
+TO RUN: python retrospective_circle.py 2014-01-19_14:56:32.csv
 
 """
 
@@ -44,7 +44,12 @@ def read_file(filename):
 
     return rawData
 
+<<<<<<< HEAD
+
+def create_circle_graph():
+=======
 def create_graph():
+>>>>>>> a3e5336e05000eb2ac8155e09f666aadf368583d
     fig = plt.figure(1)
     ax = fig.add_subplot(1,1,1)
     circle = plt.Circle((0,0), radius = 2, color = 'r', fill = False)
@@ -55,7 +60,7 @@ def create_graph():
     ax.add_patch(circle)
     return fig, ax, circle
 
-def update_graph(fig, ax, circle, x, y):
+def update_circle_graph(fig, ax, circle, x, y):
     fig.clf()
     fig.gca().add_artist(circle)
     plt.plot([-.0001,.0001],[-2,2],'k-')
@@ -68,9 +73,9 @@ def update_graph(fig, ax, circle, x, y):
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         rawData = read_file(sys.argv[1])
-        fig, ax, circle = create_graph()
+        fig, ax, circle = create_circle_graph()
         for i in range(len(rawData["accelX"])):
-            update_graph(fig, ax, circle, rawData["accelX"][i]/ACCEL_CONVERSION, rawData["accelY"][i]/ACCEL_CONVERSION)
+            update_circle_graph(fig, ax, circle, rawData["accelX"][i]/ACCEL_CONVERSION, rawData["accelY"][i]/ACCEL_CONVERSION)
         # plt.legend()
         plt.show()
 
