@@ -5,6 +5,9 @@ Collects Accelerometer Data from Arduimu.
 
 TO SAMPLE FOREVER: python main2.py
 TO TAKE A SET NUMBER OF SAMPLES: python main.py 50
+
+
+open_logging as function
 """
 
 import csv,serial,os,re,sys
