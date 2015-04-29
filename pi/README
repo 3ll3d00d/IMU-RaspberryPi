@@ -1,3 +1,6 @@
 TO SAMPLE FOREVER: python main.py
 TO TAKE A SET NUMBER OF SAMPLES: python main.py 50
 TO PLOT DATA: python plotData.py 2014-01-19_14:56:32.csv
+TO DISPLAY REAL TIME DATA SAMPLING FOREVER(Circle Graph): python realtime_circle.py
+TO VIEW CIRCLE GRAPH OF SAVED DATA: python retrospective_circle.py 2014-01-19_14:56:32.csv
+

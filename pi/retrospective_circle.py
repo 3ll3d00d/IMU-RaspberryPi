@@ -44,7 +44,6 @@ def read_file(filename):
 
     return rawData
 
-
 def create_graph():
     fig = plt.figure(1)
     ax = fig.add_subplot(1,1,1)
