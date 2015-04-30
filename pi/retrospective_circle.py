@@ -24,6 +24,10 @@ colors = ["r","b","g","c","m","k"]
 labels = ["pitch","roll","yaw","accelX","accelY","accelZ","latitude","longitude","altitude","GPS_fix"]
 
 def read_file(filename):
+    """ Read the .csv made from collecting data from the arduIMU.
+        filename: path to the .csv
+        returns: dictionary of the different data columns of the arduIMU
+    """
     rawData = {}
     for i in range(6):
         rawData[labels[i]] = []

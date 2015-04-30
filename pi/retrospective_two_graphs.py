@@ -16,38 +16,37 @@ import matplotlib
 matplotlib.use('TKAgg')
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
-from retrospective_circle import create_circle_graph, update_circle_graph
-from retrospective_circle import update_circle_graph
+from retrospective_circle import create_circle_graph, update_circle_graph, read_file
 
 ACCEL_CONVERSION = 4096
 
 colors = ["r","b","g","c","m","k"]
 labels = ["pitch","roll","yaw","accelX","accelY","accelZ","latitude","longitude","altitude","GPS_fix"]
 
-def read_file(filename):
-    """ Read the .csv made from collecting data from the arduIMU.
-        filename: path to the .csv
-        returns: dictionary of the different data columns of the arduIMU
-    """
-    rawData = {}
-    for i in range(6):
-        rawData[labels[i]] = []
+# def read_file(filename):
+#     """ Read the .csv made from collecting data from the arduIMU.
+#         filename: path to the .csv
+#         returns: dictionary of the different data columns of the arduIMU
+#     """
+#     rawData = {}
+#     for i in range(6):
+#         rawData[labels[i]] = []
 
-    with open(filename, 'rb') as csvfile:
-        IMUreader = csv.reader(csvfile, delimiter=',',
-                                quotechar='|', quoting=csv.QUOTE_MINIMAL)
+#     with open(filename, 'rb') as csvfile:
+#         IMUreader = csv.reader(csvfile, delimiter=',',
+#                                 quotechar='|', quoting=csv.QUOTE_MINIMAL)
 
-        # read all the data
-        for row in IMUreader:
-            if row[0] != "pitch": # first row is headers
-                rawData["pitch"].append(float(row[0]))
-                rawData["roll"].append(float(row[1]))
-                rawData["yaw"].append(float(row[2]))
-                rawData["accelX"].append(float(row[3]))
-                rawData["accelY"].append(float(row[4]))
-                rawData["accelZ"].append(float(row[5]))
+#         # read all the data
+#         for row in IMUreader:
+#             if row[0] != "pitch": # first row is headers
+#                 rawData["pitch"].append(float(row[0]))
+#                 rawData["roll"].append(float(row[1]))
+#                 rawData["yaw"].append(float(row[2]))
+#                 rawData["accelX"].append(float(row[3]))
+#                 rawData["accelY"].append(float(row[4]))
+#                 rawData["accelZ"].append(float(row[5]))
 
-    return rawData
+#     return rawData
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
