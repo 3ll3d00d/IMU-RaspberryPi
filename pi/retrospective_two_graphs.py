@@ -16,7 +16,7 @@ import matplotlib
 matplotlib.use('TKAgg')
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
-from retrospective_circle import create_circle_graph
+from retrospective_circle import create_circle_graph, update_circle_graph
 from retrospective_circle import update_circle_graph
 
 ACCEL_CONVERSION = 4096
@@ -52,9 +52,9 @@ def read_file(filename):
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         rawData = read_file(sys.argv[1])
-        fig, ax, circle = create_graph()
+        fig, ax, circle = create_circle_graph()
         for i in range(len(rawData["accelX"])):
-            update_graph(fig, ax, circle, rawData["accelX"][i]/ACCEL_CONVERSION, rawData["accelY"][i]/ACCEL_CONVERSION)
+            update_circle_graph(fig, ax, circle, rawData["accelX"][i]/ACCEL_CONVERSION, rawData["accelY"][i]/ACCEL_CONVERSION)
         # plt.legend()
         plt.show()
 
