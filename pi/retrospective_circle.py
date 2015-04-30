@@ -44,15 +44,10 @@ def read_file(filename):
 
     return rawData
 
-<<<<<<< HEAD
-
 def create_circle_graph():
-=======
-def create_graph():
->>>>>>> a3e5336e05000eb2ac8155e09f666aadf368583d
     fig = plt.figure(1)
     ax = fig.add_subplot(1,1,1)
-    circle = plt.Circle((0,0), radius = 2, color = 'r', fill = False)
+    circle = plt.Circle((0,0), radius=2, color='r', fill=False)
     plt.plot([-.0001,.0001],[-2,2],'k-')
     plt.plot([-2,2],[-.0001,.0001],'k-')
     ax.set_xlim((-2,2))
