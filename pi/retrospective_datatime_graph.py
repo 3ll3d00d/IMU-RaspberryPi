@@ -78,10 +78,7 @@ if __name__ == "__main__":
 
 
 
-
-
-
-
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
 
 
 
@@ -119,7 +116,6 @@ if len(sys.argv) > 1:
                 rawData["accelY"].append(float(row[4]))
                 rawData["accelZ"].append(float(row[5]))
 
-
     
     def data_gen():
         t = data_gen.t
@@ -128,8 +124,8 @@ if len(sys.argv) > 1:
             i += 1
             t += 1
             yield t, rawData["accelX"][t], rawData["accelY"][t]
-    data_gen.t = 0
 
+    data_gen.t = 0
     fig, ax = plt.subplots()
     linexaccel, = ax.plot([], [], lw=2)
     lineyaccel, = ax.plot([], [], lw=2)
@@ -137,6 +133,7 @@ if len(sys.argv) > 1:
     ax.set_xlim(0, 50)
     ax.grid()
     time, xacceldata, yacceldata = [], [], []
+
     def run(data):
         # update the data
         t,x,y = data
@@ -150,7 +147,6 @@ if len(sys.argv) > 1:
             ax.figure.canvas.draw()
         linexaccel.set_data(time, xacceldata)
         lineyaccel.set_data(time, yacceldata)
-
 
         return linexaccel, lineyaccel
 

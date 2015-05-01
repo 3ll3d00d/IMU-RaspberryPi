@@ -37,7 +37,7 @@ if len(sys.argv) > 1:
 
 # open a logging file
 timestamp = datetime.today().strftime("%Y-%m-%d_%H:%M:%S")
-path = "home/Documents/REVO/IMU-RaspberryPi/pi/logs" # change this to your username
+path = "/logs" # change this to your username
 if not os.path.exists(path):
     os.makedirs(path)
 filename = os.path.join(path,timestamp + ".csv")
@@ -48,7 +48,8 @@ with open(filename, 'wb') as csvfile:
     IMUwriter.writerow(labels)
 
     # read from the device
-    s = serial.Serial(port='/dev/tty.usbserial-A7027EKU', baudrate=38400)
+    #s = serial.Serial(port='/dev/tty.usbserial-A7027EKU', baudrate=38400)
+    s = serial.Serial(port='/dev/ttyUSB0', baudrate=38400)
     i = 0
 
     while i!=numsamples:
