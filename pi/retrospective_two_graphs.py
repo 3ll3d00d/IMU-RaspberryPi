@@ -1,5 +1,4 @@
 """
-
 @authors: brennamanning, jovanduy, redfern314
 
 Reads accelerometer data from csv file
@@ -8,8 +7,8 @@ Creates animated plot of recorded data on a circular graph
 TO RUN: python retrospective_circle.py (CSV FILE NAME)
 ex:
 TO RUN: python retrospective_circle.py 2014-01-19_14:56:32.csv
-
 """
+
 import csv,sys
 import numpy as np
 import matplotlib
